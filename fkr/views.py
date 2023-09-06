@@ -8,24 +8,24 @@ def fkr(request):
     connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM TMPRAB')
-    tmp_tuple = cursor.fetchall()
+    tmp_tuples = cursor.fetchall()
 
     # sprrab
     cursor.execute('SELECT * FROM sprrab')
-    sprrab_tuple = cursor.fetchall()
+    sprrab_tuples = cursor.fetchall()
 
     # sprdom
     cursor.execute('SELECT * FROM sprdom')
-    sprdom_tuple = cursor.fetchall()
+    sprdom_tuples = cursor.fetchall()
 
     # Pays772
     cursor.execute('SELECT * FROM Pays772')
-    Pays772_tuple = cursor.fetchall()
+    Pays772_tuples = cursor.fetchall()
     connection.close()
 
     return render(request, 'fkr.html', {
-        'TMPRAB': tmp_tuple,
-        'sprrab': sprrab_tuple,
-        'sprdom': sprdom_tuple,
-        'Pays772': Pays772_tuple,
+        'TMPRAB': tmp_tuples,
+        'sprrab': sprrab_tuples,
+        'sprdom': sprdom_tuples,
+        'Pays772': Pays772_tuples,
     })
