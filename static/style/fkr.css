@@ -1,0 +1,7 @@
+form{
+    display: flex;
+    margin: 1rem;
+}
+form label, input[type="submit"]{
+    margin: .3rem 1rem;
+}
