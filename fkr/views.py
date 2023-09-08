@@ -1,9 +1,12 @@
+from functools import lru_cache
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from DjangoAIO.settings import BASE_DIR
 import sqlite3
 
 
+@lru_cache(maxsize=None)
 def fkr(request):
     # create table
     html_table = []
