@@ -1,6 +1,4 @@
 from functools import lru_cache
-
-from django.http import HttpResponse
 from django.shortcuts import render
 from DjangoAIO.settings import BASE_DIR
 import sqlite3
