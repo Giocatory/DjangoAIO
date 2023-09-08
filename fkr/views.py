@@ -67,6 +67,8 @@ def fkr(request):
                     if i[5] == j[1] and i[6] == j[3] and i[7] == j[5]:
                         statement_info.append(f"Адрес: {j[2]} {j[4]} дом {j[5]} кв {i[8]}")
 
+        # search info from `dolya`
+
         pay_table.append(["Год, месяц", "Сальдо на начало месяца", "Начислено", "Оплачено", "Долг"])
 
         # Pay772-01-2023
