@@ -164,8 +164,6 @@ def fkr(request):
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
                 break
-    else:
-        check_empty = "🐱‍‍🚀"
 
     return render(request, 'fkr.html', {
         'html_table': html_table,
