@@ -48,7 +48,7 @@
   <input type="submit" value="Поиск / Формирование">
 </form>
 
-<div style="margin-left: 2rem;">
+<div style="margin-left: 2rem; line-height: .7em;">
 <table class="client-table">
 {% for i in html_table %}
     <tr>
@@ -85,9 +85,10 @@
 </table>
 
 <br><br>
-{% for i in specialist_stamp%}
-  <p>{{ i }}</p>
-{% endfor %}
+<div style="line-height: 2.5em;">
+  {% for i in specialist_stamp%}
+    <p>{{ i }}</p>
+  {% endfor %}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
