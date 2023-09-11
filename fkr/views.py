@@ -1,5 +1,7 @@
 from functools import lru_cache
 from django.shortcuts import render
+
+import for_fkr
 from DjangoAIO.settings import BASE_DIR
 import sqlite3
 
@@ -20,38 +22,22 @@ def fkr(request):
     if people_ls == "" and people_fam == "" and people_imia == "":
         html_table = "🐱‍‍🚀"
     elif people_ls == "" and people_fam != "" and people_imia == "":
-        html_table.append(['Л/счет', 'Фамилия Имя Отчество'])
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM sprrab')
-        sprrab_tuples = cursor.fetchall()
-        connection.close()
+        sprrab_tuples = for_fkr.sprrab_tuples
+
         for i in sprrab_tuples:
             if str(i[2]).lower() == people_fam.lower():
                 html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}"])
     elif people_ls == "" and people_fam != "" and people_imia != "":
         html_table.clear()
         html_table.append(['Л/счет', 'Фамилия Имя Отчество'])
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM sprrab')
-        sprrab_tuples = cursor.fetchall()
-        connection.close()
+        sprrab_tuples = for_fkr.sprrab_tuples
+
         for i in sprrab_tuples:
             if str(i[2]).lower() == people_fam.lower() and str(i[3]).lower() == people_imia.lower():
                 html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}"])
     elif people_ls != "":
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM sprrab')
-        sprrab_tuples = cursor.fetchall()
-        connection.close()
-
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM sprdom')
-        sprdom_tuples = cursor.fetchall()
-        connection.close()
+        sprrab_tuples = for_fkr.sprrab_tuples
+        sprdom_tuples = for_fkr.sprdom_tuples
 
         statement_info = []
         statement_info.append('НО "Фонд капитального ремонта"')
@@ -128,11 +114,7 @@ def fkr(request):
         pay_table.append(["Год, месяц", "Сальдо на начало месяца", "Начислено", "Оплачено", "Долг (Кол-во мес.)"])
 
         # Pay772-01-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay772-01-2023`')
-        Pay772_01_2023 = cursor.fetchall()
-        connection.close()
+        Pay772_01_2023 = for_fkr.Pay772_01_2023
 
         for i in Pay772_01_2023:
             if client_ls == i[1]:
@@ -144,11 +126,7 @@ def fkr(request):
                 break
 
         # Pay772-02-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay772-02-2023`')
-        Pay772_02_2023 = cursor.fetchall()
-        connection.close()
+        Pay772_02_2023 = for_fkr.Pay772_02_2023
 
         for i in Pay772_02_2023:
             if client_ls == i[1]:
@@ -160,11 +138,7 @@ def fkr(request):
                 break
 
         # Pay772-03-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay772-03-2023`')
-        Pay772_03_2023 = cursor.fetchall()
-        connection.close()
+        Pay772_03_2023 = for_fkr.Pay772_03_2023
 
         for i in Pay772_03_2023:
             if client_ls == i[1]:
@@ -176,11 +150,7 @@ def fkr(request):
                 break
 
         # Pay772-04-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay772-04-2023`')
-        Pay772_04_2023 = cursor.fetchall()
-        connection.close()
+        Pay772_04_2023 = for_fkr.Pay772_04_2023
 
         for i in Pay772_04_2023:
             if client_ls == i[1]:
@@ -192,11 +162,7 @@ def fkr(request):
                 break
 
         # Pay772-05-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay772-05-2023`')
-        Pay772_05_2023 = cursor.fetchall()
-        connection.close()
+        Pay772_05_2023 = for_fkr.Pay772_05_2023
 
         for i in Pay772_05_2023:
             if client_ls == i[1]:
@@ -208,11 +174,7 @@ def fkr(request):
                 break
 
         # Pay772-06-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay772-06-2023`')
-        Pay772_06_2023 = cursor.fetchall()
-        connection.close()
+        Pay772_06_2023 = for_fkr.Pay772_06_2023
 
         for i in Pay772_06_2023:
             if client_ls == i[1]:
@@ -224,11 +186,7 @@ def fkr(request):
                 break
 
         # Pay772-07-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay772-07-2023`')
-        Pay772_07_2023 = cursor.fetchall()
-        connection.close()
+        Pay772_07_2023 = for_fkr.Pay772_07_2023
 
         for i in Pay772_07_2023:
             if client_ls == i[1]:
@@ -240,11 +198,7 @@ def fkr(request):
                 break
 
         # Pay772-08-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'FKR.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay772-08-2023`')
-        Pay772_08_2023 = cursor.fetchall()
-        connection.close()
+        Pay772_08_2023 = for_fkr.Pay772_08_2023
 
         for i in Pay772_08_2023:
             if client_ls == i[1]:

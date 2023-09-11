@@ -1,5 +1,7 @@
 from functools import lru_cache
 from django.shortcuts import render
+
+import for_eko
 from DjangoAIO.settings import BASE_DIR
 import sqlite3
 
@@ -20,37 +22,23 @@ def eko(request):
         html_table = "🐱‍‍🚀"
     elif people_ls == "" and people_fam != "" and people_imia == "":
         html_table.append(['Л/счет', 'Фамилия Имя Отчество'])
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM sprrab')
-        sprrab_tuples = cursor.fetchall()
-        connection.close()
+        sprrab_tuples = for_eko.sprrab_tuples
+
         for i in sprrab_tuples:
             if str(i[2]).lower() == people_fam.lower():
                 html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}"])
     elif people_ls == "" and people_fam != "" and people_imia != "":
         html_table.clear()
         html_table.append(['Л/счет', 'Фамилия Имя Отчество'])
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM sprrab')
-        sprrab_tuples = cursor.fetchall()
-        connection.close()
+
+        sprrab_tuples = for_eko.sprrab_tuples
+
         for i in sprrab_tuples:
             if str(i[2]).lower() == people_fam.lower() and str(i[3]).lower() == people_imia.lower():
                 html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}"])
     elif people_ls != "":
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM sprrab')
-        sprrab_tuples = cursor.fetchall()
-        connection.close()
-
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM sprdom')
-        sprdom_tuples = cursor.fetchall()
-        connection.close()
+        sprrab_tuples = for_eko.sprrab_tuples
+        sprdom_tuples = for_eko.sprdom_tuples
 
         statement_info = []
         statement_info.append('ООО "Эко-Альянс"')
@@ -78,110 +66,70 @@ def eko(request):
         pay_table.append(["Год, месяц", "Сальдо на начало месяца", "Начислено", "Оплачено", "Долг (Кол-во мес.)"])
 
         # Pay979-11-2022
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-11-2022`')
-        Pay979_11_2022 = cursor.fetchall()
-        connection.close()
+        Pay979_11_2022 = for_eko.Pay979_11_2022
 
         for i in Pay979_11_2022:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
         # Pay979-12-2022
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-12-2022`')
-        Pay979_12_2022 = cursor.fetchall()
-        connection.close()
+        Pay979_12_2022 = for_eko.Pay979_12_2022
 
         for i in Pay979_12_2022:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
         # Pay979-1-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-1-2023`')
-        Pay979_1_2023 = cursor.fetchall()
-        connection.close()
+        Pay979_1_2023 = for_eko.Pay979_1_2023
 
         for i in Pay979_1_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
         # Pay979-2-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-2-2023`')
-        Pay979_2_2023 = cursor.fetchall()
-        connection.close()
+        Pay979_2_2023 = for_eko.Pay979_2_2023
 
         for i in Pay979_2_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
         # Pay979-3-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-3-2023`')
-        Pay979_3_2023 = cursor.fetchall()
-        connection.close()
+        Pay979_3_2023 = for_eko.Pay979_3_2023
 
         for i in Pay979_3_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
         # Pay979-4-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-4-2023`')
-        Pay979_4_2023 = cursor.fetchall()
-        connection.close()
+        Pay979_4_2023 = for_eko.Pay979_4_2023
 
         for i in Pay979_4_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
         # Pay979-5-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-5-2023`')
-        Pay979_5_2023 = cursor.fetchall()
-        connection.close()
+        Pay979_5_2023 = for_eko.Pay979_5_2023
 
         for i in Pay979_5_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
         # Pay979-6-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-6-2023`')
-        Pay979_6_2023 = cursor.fetchall()
-        connection.close()
+        Pay979_6_2023 = for_eko.Pay979_6_2023
 
         for i in Pay979_6_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
         # Pay979-7-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-7-2023`')
-        Pay979_7_2023 = cursor.fetchall()
-        connection.close()
+        Pay979_7_2023 = for_eko.Pay979_7_2023
 
         for i in Pay979_7_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
         # Pay979-8-2023
-        connection = sqlite3.connect(f"{BASE_DIR / 'EKO.sqlite3'}")
-        cursor = connection.cursor()
-        cursor.execute('SELECT * FROM `Pay979-8-2023`')
-        Pay979_8_2023 = cursor.fetchall()
-        connection.close()
+        Pay979_8_2023 = for_eko.Pay979_8_2023
 
         for i in Pay979_8_2023:
             if client_ls == i[1]:
