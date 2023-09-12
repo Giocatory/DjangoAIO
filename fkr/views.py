@@ -19,22 +19,38 @@ def fkr(request):
     people_fam = request.POST.get("supplier-fam")
     people_imia = request.POST.get("supplier-imia")
 
+    # если ничего не введено
     if people_ls == "" and people_fam == "" and people_imia == "":
         html_table = "🐱‍‍🚀"
+
+    # если введена только фамилия
     elif people_ls == "" and people_fam != "" and people_imia == "":
         sprrab_tuples = for_fkr.sprrab_tuples
+        sprdom_tuples = for_fkr.sprdom_tuples
+
+        html_table.append(['Л/счет', 'Фамилия Имя Отчество', 'Город', 'Адрес'])
 
         for i in sprrab_tuples:
             if str(i[2]).lower() == people_fam.lower():
-                html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}"])
+                for j in sprdom_tuples:
+                    if i[5] == j[1] and i[6] == j[3] and i[7] == j[5]:
+                        html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"{j[4]}, д {j[5]}, кв {i[8]}"])
+
+    # Если введены фамилия и имя
     elif people_ls == "" and people_fam != "" and people_imia != "":
-        html_table.clear()
-        html_table.append(['Л/счет', 'Фамилия Имя Отчество'])
         sprrab_tuples = for_fkr.sprrab_tuples
+        sprdom_tuples = for_fkr.sprdom_tuples
+
+        html_table = []
+        html_table.append(['Л/счет', 'Фамилия Имя Отчество', 'Город', 'Адрес'])
 
         for i in sprrab_tuples:
             if str(i[2]).lower() == people_fam.lower() and str(i[3]).lower() == people_imia.lower():
-                html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}"])
+                for j in sprdom_tuples:
+                    if i[5] == j[1] and i[6] == j[3] and i[7] == j[5]:
+                        html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"{j[4]}, д {j[5]}, кв {i[8]}"])
+
+    # если введен лицевой счет
     elif people_ls != "":
         sprrab_tuples = for_fkr.sprrab_tuples
         sprdom_tuples = for_fkr.sprdom_tuples
