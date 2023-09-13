@@ -20,22 +20,44 @@ def eko(request):
 
     if people_ls == "" and people_fam == "" and people_imia == "":
         html_table = "🐱‍‍🚀"
+
+    # Если введена только фамилия
     elif people_ls == "" and people_fam != "" and people_imia == "":
-        html_table.append(['Л/счет', 'Фамилия Имя Отчество'])
+        html_table.append(['Л/счет', 'Фамилия Имя Отчество', 'Город', 'Адрес'])
         sprrab_tuples = for_eko.sprrab_tuples
+        sprdom_tuples = for_eko.sprdom_tuples
 
         for i in sprrab_tuples:
             if str(i[2]).lower() == people_fam.lower():
-                html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}"])
+                for j in sprdom_tuples:
+                    if i[5] == j[1] and i[6] == j[3]:
+                        if i[7] is None:
+                            temp = ' '
+                            html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"Улица {j[4]}, дом {j[5]}, кв {temp}"])
+                        else:
+                            html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"Улица {j[4]}, дом {j[5]}, кв {i[7]}"])
+
+    # Если введена фамилия и имя
     elif people_ls == "" and people_fam != "" and people_imia != "":
-        html_table.clear()
-        html_table.append(['Л/счет', 'Фамилия Имя Отчество'])
+        html_table = []
+        html_table.append(['Л/счет', 'Фамилия Имя Отчество', 'Город', 'Адрес'])
 
         sprrab_tuples = for_eko.sprrab_tuples
+        sprdom_tuples = for_eko.sprdom_tuples
 
         for i in sprrab_tuples:
-            if str(i[2]).lower() == people_fam.lower() and str(i[3]).lower() == people_imia.lower():
-                html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}"])
+            if str(i[2]).lower() == people_fam.lower():
+                for j in sprdom_tuples:
+                    if i[5] == j[1] and i[6] == j[3]:
+                        if i[7] is None:
+                            temp = ' '
+                            html_table.append(
+                                [i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"Улица {j[4]}, дом {j[5]}, кв {temp}"])
+                        else:
+                            html_table.append(
+                                [i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"Улица {j[4]}, дом {j[5]}, кв {i[7]}"])
+
+    # Если введен лицевой счет
     elif people_ls != "":
         sprrab_tuples = for_eko.sprrab_tuples
         sprdom_tuples = for_eko.sprdom_tuples
@@ -132,6 +154,13 @@ def eko(request):
         Pay979_8_2023 = for_eko.Pay979_8_2023
 
         for i in Pay979_8_2023:
+            if client_ls == i[1]:
+                pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+
+        # Pay979-9-2023
+        Pay979_9_2023 = for_eko.Pay979_9_2023
+
+        for i in Pay979_9_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 

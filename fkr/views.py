@@ -225,6 +225,18 @@ def fkr(request):
                     pay_table.append([i[2], i[3], i[4], i[5], i[11]])
                 break
 
+        # Pay772-09-2023
+        Pay772_09_2023 = for_fkr.Pay772_09_2023
+
+        for i in Pay772_09_2023:
+            if client_ls == i[1]:
+                if i[11] is None:
+                    temp = '0'
+                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                else:
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                break
+
     specialist_stamp = ["М П", "Специалист ОСЗН"]
 
     return render(request, 'fkr.html', {

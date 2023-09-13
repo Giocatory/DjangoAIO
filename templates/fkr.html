@@ -10,16 +10,50 @@
     <link media="print" rel="stylesheet" href="{% static 'style/fkr_print.css' %}">
 
   <style>
+    *{
+             scrollbar-width: none;
+        }
+    ::-webkit-scrollbar {
+            width: 0;
+        }
     .client-table, tr, td {
       border: .1rem solid black;
       padding: .2rem;
       text-align: center;
     }
+
+    .html_table tr:first-child{
+      background-color: #fdfd93;
+      font-weight: bold;
+    }
+    .html_table tr td:first-child{
+      font-weight: bold;
+    }
+    input[type="text"]{
+      border-radius: .5rem;
+    }
+    input[type="submit"]{
+      border-radius: .5rem;
+      background-color: #fdfd93;
+    }
+    input[type="submit"]:focus{
+      border-radius: .5rem;
+      background-color: #b6fd93;
+    }
+
+    nav{
+      background-color: #fdfd93;
+      border-bottom: .1rem solid #a1a1a1;
+      padding: 1em;
+    }
+    .active{
+      font-weight: bold;
+    }
   </style>
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -27,10 +61,10 @@
           <a class="nav-link" href="{% url 'main' %}">Главная</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'fkr' %}">ФКР</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'fkr' %}">ФондКапитальногоРемонта</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'eko' %}">ЭкоАльянс</a>
+          <a class="nav-link" href="{% url 'eko' %}">Эко-Альянс</a>
         </li>
       </ul>
     </div>
@@ -48,8 +82,8 @@
   <input type="submit" value="Поиск / Формирование">
 </form>
 
-<div style="margin-left: 2rem; line-height: .7em;">
-<table class="client-table">
+<div style="margin-left: 2rem; line-height: 1em;">
+<table class="client-table html_table">
 {% for i in html_table %}
     <tr>
       {% for j in i%}

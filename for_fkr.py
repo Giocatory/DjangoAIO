@@ -42,6 +42,10 @@ def fkr_connect_db():
     # Pay772-08-2023
     cursor.execute('SELECT * FROM `Pay772-08-2023`')
     Pay772_08_2023 = cursor.fetchall()
+
+    # Pay772-09-2023
+    cursor.execute('SELECT * FROM `Pay772-09-2023`')
+    Pay772_09_2023 = cursor.fetchall()
     connection.close()
 
     return {
@@ -55,6 +59,7 @@ def fkr_connect_db():
         'Pay772_06_2023': Pay772_06_2023,
         'Pay772_07_2023': Pay772_07_2023,
         'Pay772_08_2023': Pay772_08_2023,
+        'Pay772_09_2023': Pay772_09_2023,
     }
 
 
@@ -69,3 +74,4 @@ Pay772_05_2023 = result['Pay772_05_2023']
 Pay772_06_2023 = result['Pay772_06_2023']
 Pay772_07_2023 = result['Pay772_07_2023']
 Pay772_08_2023 = result['Pay772_08_2023']
+Pay772_09_2023 = result['Pay772_09_2023']

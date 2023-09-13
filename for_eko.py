@@ -51,6 +51,11 @@ def eko_connect_db():
     cursor.execute('SELECT * FROM `Pay979-8-2023`')
     Pay979_8_2023 = cursor.fetchall()
 
+    # Pay979-9-2023
+    cursor.execute('SELECT * FROM `Pay979-9-2023`')
+    Pay979_9_2023 = cursor.fetchall()
+    connection.close()
+
 
     return {
         'sprrab_tuples': sprrab_tuples,
@@ -65,6 +70,7 @@ def eko_connect_db():
         'Pay979_6_2023': Pay979_6_2023,
         'Pay979_7_2023': Pay979_7_2023,
         'Pay979_8_2023': Pay979_8_2023,
+        'Pay979_9_2023': Pay979_9_2023,
     }
 
 
@@ -81,3 +87,4 @@ Pay979_5_2023 = result['Pay979_5_2023']
 Pay979_6_2023 = result['Pay979_6_2023']
 Pay979_7_2023 = result['Pay979_7_2023']
 Pay979_8_2023 = result['Pay979_8_2023']
+Pay979_9_2023 = result['Pay979_9_2023']
