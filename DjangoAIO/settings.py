@@ -74,7 +74,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
     BASE_DIR / 'static/images',
-    BASE_DIR / 'static/style'
+    BASE_DIR / 'static/../templates/../static/style'
 ]
 
 WSGI_APPLICATION = 'DjangoAIO.wsgi.application'

@@ -4,85 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Фонд капитального ремонта</title>
-    <link rel="stylesheet" href="{% static 'style/fkr.css' %}">
+    <link rel="stylesheet" href="{% static 'fkr.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-    <link media="print" rel="stylesheet" href="{% static 'style/fkr_print.css' %}">
-
-  <style>
-    *{
-             scrollbar-width: none;
-        }
-    ::-webkit-scrollbar {
-            width: 0;
-        }
-    .client-table, tr, td {
-      border: .1rem solid black;
-      padding: .2rem;
-      text-align: center;
-    }
-
-    .html_table tr:first-child{
-      background-color: #fdfd93;
-      font-weight: bold;
-    }
-    .html_table tr td:first-child{
-      font-weight: bold;
-    }
-    input[type="text"]{
-      border-radius: .5rem;
-    }
-    input[type="submit"]{
-      border-radius: .5rem;
-      background-color: #fdfd93;
-    }
-    input[type="submit"]:focus{
-      border-radius: .5rem;
-      background-color: #b6fd93;
-    }
-
-    nav{
-      background-color: #fdfd93;
-      border-bottom: .1rem solid #a1a1a1;
-      padding: 1em;
-    }
-    .active{
-      font-weight: bold;
-    }
-  </style>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link media="print" rel="stylesheet" href="{% static 'fkr_print.css' %}">
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li>
-          <a class="nav-link" href="{% url 'main' %}">Главная</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'fkr' %}">ФондКапитальногоРемонта</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'eko' %}">Эко-Альянс</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+{% include 'temp/header.html' %}
+{% include 'temp/form.html' %}
 
-<form method="post">
-  {% csrf_token %}
-  <label>Л/счет:</label>
-  <input type="text" name="supplier-ls">
-  <label>Фамилия:</label>
-  <input type="text" name="supplier-fam">
-  <label>Имя:</label>
-  <input type="text" name="supplier-imia">
-  <input type="submit" value="Поиск / Формирование">
-</form>
-
-<div style="margin-left: 2rem; line-height: 1em;">
+<div class="main-div">
 <table class="client-table html_table">
 {% for i in html_table %}
     <tr>
@@ -98,7 +30,7 @@
   <p>{{ i }}</p>
 {% endfor %}
 
-  <table class="client-table" style="margin-bottom: 1rem">
+  <table class="client-table">
     {% for i in other_owners %}
       <tr>
         {% for j in i %}
@@ -119,7 +51,7 @@
 </table>
 
 <br><br>
-<div style="line-height: 2.5em;">
+<div class="specialist">
   {% for i in specialist_stamp%}
     <p>{{ i }}</p>
   {% endfor %}

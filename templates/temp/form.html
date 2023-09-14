@@ -1,0 +1,10 @@
+<form method="post">
+  {% csrf_token %}
+  <label>Л/счет:</label>
+  <input type="text" name="supplier-ls">
+  <label>Фамилия:</label>
+  <input type="text" name="supplier-fam">
+  <label>Имя:</label>
+  <input type="text" name="supplier-imia">
+  <input type="submit" value="Поиск / Формирование">
+</form>
