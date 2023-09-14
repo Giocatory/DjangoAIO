@@ -46,7 +46,7 @@ def eko(request):
         sprdom_tuples = for_eko.sprdom_tuples
 
         for i in sprrab_tuples:
-            if str(i[2]).lower() == people_fam.lower():
+            if str(i[2]).lower() == people_fam.lower() and str(i[3]).lower() == people_imia.lower():
                 for j in sprdom_tuples:
                     if i[5] == j[1] and i[6] == j[3]:
                         if i[7] is None:
