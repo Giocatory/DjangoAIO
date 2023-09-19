@@ -19,7 +19,7 @@ def eko(request):
     people_imia = request.POST.get("supplier-imia")
 
     if people_ls == "" and people_fam == "" and people_imia == "":
-        html_table = "🐱‍‍🚀"
+        html_table = "----"
 
     # Если введена только фамилия
     elif people_ls == "" and people_fam != "" and people_imia == "":
