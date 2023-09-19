@@ -23,25 +23,59 @@ def energo(request):
         html_table.append(['Л/счет', 'Фамилия Имя Отчество', 'Адрес'])
         sprrab_tuples = for_energo.sprrab_tuples
         for i in sprrab_tuples:
-            result = []
             if str(i[2]).lower().startswith(people_fam.lower()):
                 ls = str(i[1])
                 if i[11] is not None:
-                    temp_str = [i[4], i[5], i[6], i[7], f"{i[8]}{'' if i[9] is None else i[9]}", f"кв {i[11]}"]
+                    temp_str = [
+                        f"{'' if i[4] is None else i[4]}", f"{'' if i[5] is None else i[5]}",
+                        f"{'' if i[6] is None else i[6]}", f"{'' if i[7] is None else i[7]}",
+                        f"{i[8]}{'' if i[9] is None else i[9]}", f"кв {i[11]}"]
                 else:
-                    temp_str = [i[4], i[5], i[6], i[7], f"{i[8]}{'' if i[9] is None else i[9]}"]
+                    temp_str = [
+                        f"{'' if i[4] is None else i[4]}", f"{'' if i[5] is None else i[5]}",
+                        f"{'' if i[6] is None else i[6]}", f"{'' if i[7] is None else i[7]}",
+                        f"{i[8]}{'' if i[9] is None else i[9]}"
+                        ]
 
                 result = [
                     f"{ls[:-2]}",
                     i[2],
-                    "; ".join(temp_str)
+                    "; ".join(temp_str).replace(" ;", "").lstrip('; ')
                 ]
                 if result not in html_table:
                     html_table.append(result)
 
     # Если введена фамилия и имя
     elif people_ls == "" and people_fam != "" and people_imia != "":
-        pass
+        html_table.clear()
+
+        html_table.append(['Л/счет', 'Фамилия Имя Отчество', 'Адрес'])
+        sprrab_tuples = for_energo.sprrab_tuples
+
+        for i in sprrab_tuples:
+            fam_imia = str(i[2]).lower().split(' ')
+
+            if fam_imia[0].startswith(people_fam.lower()) and fam_imia[1].startswith(people_imia.lower()):
+                ls = str(i[1])
+                if i[11] is not None:
+                    temp_str = [
+                        f"{'' if i[4] is None else i[4]}", f"{'' if i[5] is None else i[5]}",
+                        f"{'' if i[6] is None else i[6]}", f"{'' if i[7] is None else i[7]}",
+                        f"д. {'' if i[8] is None else i[8]}{'' if i[9] is None else i[9]}", f"кв {i[11]}"]
+                else:
+                    temp_str = [
+                        f"{'' if i[4] is None else i[4]}", f"{'' if i[5] is None else i[5]}",
+                        f"{'' if i[6] is None else i[6]}", f"{'' if i[7] is None else i[7]}",
+                        f"д. {'' if i[8] is None else i[8]}{'' if i[9] is None else i[9]}"
+                    ]
+
+                result = [
+                    f"{ls[:-2]}",
+                    i[2],
+                    "; ".join(temp_str).replace(" ;", "").lstrip('; ')
+                ]
+                if result not in html_table:
+                    html_table.append(result)
 
     # Если введен лицевой счет
     elif people_ls != "":
