@@ -9,6 +9,9 @@ import for_energo
 def energo(request):
     # tables
     html_table = []
+    common_table = []
+    pay_table = []
+    result_table = []
 
     # request from form
     people_ls = request.POST.get("supplier-ls")
@@ -29,17 +32,17 @@ def energo(request):
                     temp_str = [
                         f"{'' if i[4] is None else i[4]}", f"{'' if i[5] is None else i[5]}",
                         f"{'' if i[6] is None else i[6]}", f"{'' if i[7] is None else i[7]}",
-                        f"{i[8]}{'' if i[9] is None else i[9]}", f"кв {i[11]}"]
+                        f"д. {'' if i[8] is None else i[8]}{'' if i[9] is None else i[9]}", f"кв {i[11]}"]
                 else:
                     temp_str = [
                         f"{'' if i[4] is None else i[4]}", f"{'' if i[5] is None else i[5]}",
                         f"{'' if i[6] is None else i[6]}", f"{'' if i[7] is None else i[7]}",
-                        f"{i[8]}{'' if i[9] is None else i[9]}"
-                        ]
+                        f"д. {'' if i[8] is None else i[8]}{'' if i[9] is None else i[9]}"
+                    ]
 
                 result = [
                     f"{ls[:-2]}",
-                    i[2],
+                    f"{i[2]}",
                     "; ".join(temp_str).replace(" ;", "").lstrip('; ')
                 ]
                 if result not in html_table:
@@ -79,8 +82,13 @@ def energo(request):
 
     # Если введен лицевой счет
     elif people_ls != "":
-        pass
+        sprrab_tuples = for_energo.sprrab_tuples
+        pay_tuples = for_energo.sprrab_tuples
+        tarif_tuples = for_energo.energ_tarif_tuples
 
     return render(request, 'energo.html', {
         'html_table': html_table,
+        'common_table': common_table,
+        'pay_table': pay_table,
+        'result_table': result_table,
     })
