@@ -25,11 +25,11 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="Chita" uuid="a5889bfb-2a75-4d07-8806-ea79dcaadbc4">
+    <data-source source="LOCAL" name="energo" uuid="ae1a3b7d-e5c0-4fa8-b32e-5fd26dac34d1">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/Chita.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/energo.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>

@@ -24,6 +24,9 @@ form label, input[type="submit"]{
     nav, form{
         display: none;
     }
+    .spravka{
+        display: none;
+    }
 }
 
 .html_table tr:first-child{
@@ -64,4 +67,15 @@ nav{
 }
 .results{
     margin-top: .5rem;
+}
+.spravka a{
+    padding: .5rem;
+    background-color: #fdfd93;
+    border: 1px solid #a1a1a1;
+    border-radius: .5rem;
+    text-decoration: none;
+    color: #000;
+}
+.spravka a:hover{
+    background-color: #9bbe51;
 }

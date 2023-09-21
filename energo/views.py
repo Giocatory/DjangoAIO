@@ -159,6 +159,8 @@ def energo(request):
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             last_saldo = [f"{i[2]}", f"{i[1]}"]
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
                     else:
                         break
@@ -176,6 +178,8 @@ def energo(request):
                                 f"{i[4]}",
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
                     else:
                         break
@@ -193,6 +197,8 @@ def energo(request):
                                 f"{i[4]}",
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
                     else:
                         break
@@ -210,6 +216,8 @@ def energo(request):
                                 f"{i[4]}",
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
                     else:
                         break
@@ -227,6 +235,8 @@ def energo(request):
                                 f"{i[4]}",
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
                     else:
                         break
@@ -244,6 +254,8 @@ def energo(request):
                                 f"{i[4]}",
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
                     else:
                         break
@@ -261,6 +273,8 @@ def energo(request):
                                 f"{i[4]}",
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
                     else:
                         break
@@ -278,6 +292,8 @@ def energo(request):
                                 f"{i[4]}",
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
                     else:
                         break
@@ -295,6 +311,8 @@ def energo(request):
                                 f"{i[4]}",
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
                     else:
                         break
@@ -302,7 +320,8 @@ def energo(request):
         # result_table
         result_table.append(f"SALDO составляет на {last_saldo[0]} в размере {last_saldo[1]} рублей")
         result_table.append(f"Оплата составила: {total_sumo:.2f} рублей")
-        result_table.append(f"Среднее потребление составило:")
+        result_table.append(
+            f"Среднее потребление составило: {total_middle_klv}кВт.ч. на сумму {total_sum_klv:.2f} рублей")
 
     return render(request, 'energo.html', {
         'html_table': html_table,
