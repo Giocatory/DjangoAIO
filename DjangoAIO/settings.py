@@ -94,9 +94,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'EKO.sqlite3'
     },
-    'Chita': {
+    'energo': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'Chita.sqlite3'
+        'NAME': BASE_DIR / 'energo.sqlite3'
     },
 }
 
