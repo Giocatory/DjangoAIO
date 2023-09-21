@@ -1,3 +1,6 @@
+* {
+    margin-left: 1em;
+}
 a{
     display: block;
     width: 8em;
@@ -12,4 +15,9 @@ a{
 }
 a:hover{
     background-color: #9bbe51;
+}
+@media print{
+    a, form{
+        display: none;
+    }
 }

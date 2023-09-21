@@ -347,7 +347,7 @@ def energo_spravka(request):
         '202308': 3.464,
     }
     spravka_arr = []
-    current_date = f"Дата выдачи: {datetime.now().day}.{datetime.now().month}.{datetime.now().year}"
+    specialist = ["Специалист", "Северного ОСЗН"]
 
     # request from form
     people_ls = request.POST.get("supplier-ls")
@@ -356,4 +356,50 @@ def energo_spravka(request):
     sprrab202308_tuples = for_energo.sprrab202308_tuples
     pays_tuples = for_energo.pays_tuples
 
-    return render(request, 'energo_spravka.html', {})
+    # date
+    if datetime.now().month < 10:
+        current_date = f"Дата выдачи: {datetime.now().day}.0{datetime.now().month}.{datetime.now().year}"
+    else:
+        current_date = f"Дата выдачи: {datetime.now().day}.{datetime.now().month}.{datetime.now().year}"
+
+    # spravka_arr
+    for spr in sprrab202308_tuples:
+        temp_str = []
+        if str(spr[0]) == people_ls:
+            if spr[9] is not None:
+                temp_str = [
+                    f"{'' if spr[2] is None else spr[2]}", f"{'' if spr[3] is None else spr[3]}",
+                    f"{'' if spr[4] is None else spr[4]}", f"{'' if spr[5] is None else spr[5]}",
+                    f"д. {'' if spr[6] is None else spr[6]}{'' if spr[7] is None else spr[7]}", f"кв {spr[9]}"
+                ]
+            else:
+                temp_str = [
+                    f"{'' if spr[2] is None else spr[2]}", f"{'' if spr[3] is None else spr[3]}",
+                    f"{'' if spr[4] is None else spr[4]}", f"{'' if spr[5] is None else spr[5]}",
+                    f"д. {'' if spr[6] is None else spr[6]}{'' if spr[7] is None else spr[7]}"
+                ]
+            spravka_arr.append(f"ФИО: {spr[1]}")
+            spravka_arr.append(f"Лицевой счет №{spr[0]}")
+            spravka_arr.append(f"Проживающий по адресу: {'; '.join(temp_str).replace(' ;', '').lstrip('; ')}")
+            temp_eval = float(str(spr[10])) * tarif[f'{spr[14]}']
+            spravka_arr.append(f"Месячное потребление: {spr[10]}кВт.ч. на сумму "
+                               f"{temp_eval:.2f}")
+            break
+    # pay_table
+    for pay in pays_tuples:
+        ls = str(pay[0])
+        if people_ls == ls[:-2]:
+            if str(pay[2]) == "202211":
+                break
+            spravka_arr.append(f"Оплата составила: {pay[4]}")
+            spravka_arr.append(f"Задолженность или переплата по электроэнергии составляет на {pay[2]}"
+                               f" в размере {pay[1]}")
+            break
+
+    spravka_arr.append(f"Справка дана по месту требования")
+
+    return render(request, 'energo_spravka.html', {
+        'current_date': current_date,
+        'spravka_arr': spravka_arr,
+        'specialist': specialist,
+    })
