@@ -330,3 +330,30 @@ def energo(request):
         'result_table': result_table,
         'searched_ls': searched_ls,
     })
+
+
+@lru_cache(maxsize=None)
+def energo_spravka(request):
+    # total vars
+    tarif = {
+        '202212': 3.464,
+        '202301': 3.464,
+        '202302': 3.464,
+        '202303': 3.464,
+        '202304': 3.464,
+        '202305': 3.464,
+        '202306': 3.464,
+        '202307': 3.464,
+        '202308': 3.464,
+    }
+    spravka_arr = []
+    current_date = f"Дата выдачи: {datetime.now().day}.{datetime.now().month}.{datetime.now().year}"
+
+    # request from form
+    people_ls = request.POST.get("supplier-ls")
+
+    # connect
+    sprrab202308_tuples = for_energo.sprrab202308_tuples
+    pays_tuples = for_energo.pays_tuples
+
+    return render(request, 'energo_spravka.html', {})

@@ -1,0 +1,15 @@
+a{
+    display: block;
+    width: 8em;
+    text-align: center;
+    margin: 1rem;
+    padding: .5rem;
+    background-color: #fdfd93;
+    border: 1px solid #a1a1a1;
+    border-radius: .5rem;
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+    background-color: #9bbe51;
+}
