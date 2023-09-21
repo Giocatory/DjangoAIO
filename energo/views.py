@@ -8,6 +8,7 @@ import for_energo
 @lru_cache(maxsize=None)
 def energo(request):
     # total vars
+    searched_ls = ""
     tarif = {
         '202212': 3.464,
         '202301': 3.464,
@@ -133,6 +134,7 @@ def energo(request):
                 common_table.append(f"ФИО: {i[1]}")
                 common_table.append(f"Л/счет: {i[0]}")
                 common_table.append(f"Адрес: {'; '.join(temp_str).replace(' ;', '').lstrip('; ')}")
+                searched_ls = str(i[0])
                 break
 
         # pay_table
@@ -300,11 +302,12 @@ def energo(request):
         # result_table
         result_table.append(f"SALDO составляет на {last_saldo[0]} в размере {last_saldo[1]} рублей")
         result_table.append(f"Оплата составила: {total_sumo:.2f} рублей")
-        result_table.append(f"")
+        result_table.append(f"Среднее потребление составило:")
 
     return render(request, 'energo.html', {
         'html_table': html_table,
         'common_table': common_table,
         'pay_table': pay_table,
         'result_table': result_table,
+        'searched_ls': searched_ls,
     })
