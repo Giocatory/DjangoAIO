@@ -4,6 +4,9 @@
 ::-webkit-scrollbar {
     width: 0;
 }
+.client-table{
+    margin: .5rem;
+}
 .client-table, tr, td {
     border: .1rem solid black;
     padding: .2rem;
@@ -58,4 +61,7 @@ nav{
 }
 .specialist{
     line-height: 2.5em;
+}
+.results{
+    margin-top: .5rem;
 }
