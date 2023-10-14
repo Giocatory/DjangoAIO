@@ -31,7 +31,7 @@ def fkr(request):
         html_table.append(['Л/счет', 'Фамилия Имя Отчество', 'Город', 'Адрес'])
 
         for i in sprrab_tuples:
-            if str(i[2]).lower() == people_fam.lower():
+            if (str(i[2]).lower()).startswith(people_fam.lower()):
                 for j in sprdom_tuples:
                     if i[5] == j[1] and i[6] == j[3] and i[7] == j[5]:
                         html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"{j[4]}, д {j[5]}, кв {i[8]}"])
@@ -45,7 +45,7 @@ def fkr(request):
         html_table.append(['Л/счет', 'Фамилия Имя Отчество', 'Город', 'Адрес'])
 
         for i in sprrab_tuples:
-            if str(i[2]).lower() == people_fam.lower() and str(i[3]).lower() == people_imia.lower():
+            if (str(i[2]).lower()).startswith(people_fam.lower()) and (str(i[3]).lower()).startswith(people_imia.lower()):
                 for j in sprdom_tuples:
                     if i[5] == j[1] and i[6] == j[3] and i[7] == j[5]:
                         html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"{j[4]}, д {j[5]}, кв {i[8]}"])
@@ -229,6 +229,18 @@ def fkr(request):
         Pay772_09_2023 = for_fkr.Pay772_09_2023
 
         for i in Pay772_09_2023:
+            if client_ls == i[1]:
+                if i[11] is None:
+                    temp = '0'
+                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                else:
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                break
+
+        # Pay772-10-2023
+        Pay772_10_2023 = for_fkr.Pay772_10_2023
+
+        for i in Pay772_10_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
