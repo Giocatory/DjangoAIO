@@ -19,6 +19,7 @@ def energo(request):
         '202306': 3.464,
         '202307': 3.464,
         '202308': 3.464,
+        '202309': 3.464,
     }
     last_saldo = ["", ""]
     total_sumo = 0
@@ -113,6 +114,7 @@ def energo(request):
         sprrab202306_tuples = for_energo.sprrab202306_tuples
         sprrab202307_tuples = for_energo.sprrab202307_tuples
         sprrab202308_tuples = for_energo.sprrab202308_tuples
+        sprrab202309_tuples = for_energo.sprrab202309_tuples
         pays_tuples = for_energo.pays_tuples
 
         # common_table
@@ -145,6 +147,26 @@ def energo(request):
                 if str(i[2]) == "202211":
                     break
 
+                # sprrab202309_tuples
+                for spr in sprrab202309_tuples:
+                    if str(i[2]) == str(spr[14]):
+                        ls = str(spr[0])
+                        if ls == people_ls:
+                            pay_table.append([
+                                f"{i[2]}",
+                                f"{spr[10]}",
+                                tarif[f"{i[2]}"],
+                                f"{i[1]}",
+                                f"{i[4]}",
+                            ])
+                            total_sumo += float(str(i[4]).replace(",", "."))
+                            last_saldo = [f"{i[2]}", f"{i[1]}"]
+                            total_middle_klv += int(spr[10])
+                            total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
+                            break
+                    else:
+                        break
+
                 # sprrab202308_tuples
                 for spr in sprrab202308_tuples:
                     if str(i[2]) == str(spr[14]):
@@ -158,7 +180,6 @@ def energo(request):
                                 f"{i[4]}",
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
-                            last_saldo = [f"{i[2]}", f"{i[1]}"]
                             total_middle_klv += int(spr[10])
                             total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
                             break
@@ -345,6 +366,7 @@ def energo_spravka(request):
         '202306': 3.464,
         '202307': 3.464,
         '202308': 3.464,
+        '202309': 3.464,
     }
     spravka_arr = []
     specialist = ["Специалист", "Северного ОСЗН"]
@@ -353,7 +375,7 @@ def energo_spravka(request):
     people_ls = request.POST.get("supplier-ls")
 
     # connect
-    sprrab202308_tuples = for_energo.sprrab202308_tuples
+    sprrab202309_tuples = for_energo.sprrab202309_tuples
     pays_tuples = for_energo.pays_tuples
 
     # date
@@ -363,7 +385,7 @@ def energo_spravka(request):
         current_date = f"Дата выдачи: {datetime.now().day}.{datetime.now().month}.{datetime.now().year}"
 
     # spravka_arr
-    for spr in sprrab202308_tuples:
+    for spr in sprrab202309_tuples:
         temp_str = []
         if str(spr[0]) == people_ls:
             if spr[9] is not None:
@@ -385,6 +407,7 @@ def energo_spravka(request):
             spravka_arr.append(f"Месячное потребление: {spr[10]}кВт.ч. на сумму "
                                f"{temp_eval:.2f}")
             break
+
     # pay_table
     for pay in pays_tuples:
         ls = str(pay[0])

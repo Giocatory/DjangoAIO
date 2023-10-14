@@ -28,7 +28,7 @@ def eko(request):
         sprdom_tuples = for_eko.sprdom_tuples
 
         for i in sprrab_tuples:
-            if str(i[2]).lower() == people_fam.lower():
+            if (str(i[2]).lower()).startswith(people_fam.lower()):
                 for j in sprdom_tuples:
                     if i[5] == j[1] and i[6] == j[3]:
                         if i[7] is None:
@@ -46,7 +46,7 @@ def eko(request):
         sprdom_tuples = for_eko.sprdom_tuples
 
         for i in sprrab_tuples:
-            if str(i[2]).lower() == people_fam.lower() and str(i[3]).lower() == people_imia.lower():
+            if (str(i[2]).lower()).startswith(people_fam.lower()) and (str(i[3]).lower()).startswith(people_imia.lower()):
                 for j in sprdom_tuples:
                     if i[5] == j[1] and i[6] == j[3]:
                         if i[7] is None:
@@ -161,6 +161,13 @@ def eko(request):
         Pay979_9_2023 = for_eko.Pay979_9_2023
 
         for i in Pay979_9_2023:
+            if client_ls == i[1]:
+                pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+
+        # Pay979-10-2023
+        Pay979_10_2023 = for_eko.Pay979_10_2023
+
+        for i in Pay979_10_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11]])
 
