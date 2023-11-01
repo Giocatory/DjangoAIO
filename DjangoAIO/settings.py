@@ -98,6 +98,63 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'energo.sqlite3'
     },
+    'Baikalvodo': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/Baikalvodo.db'
+    },
+    'bvk': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/bvk.db'
+    },
+    'edinstvo': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/edinstvo.db'
+    },
+    'ikibzyak': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/ikibzyak.db'
+    },
+    'komfort': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/komfort.db'
+    },
+    'odis': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/odis.db'
+    },
+    'Stimul': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/Stimul.db'
+    },
+    'tvkom': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/tvkom.db'
+    },
+    'vertikal': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/vertikal.db'
+    },
+    # registers
+    'angoya': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/registers/angoya.db'
+    },
+    'kichera': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/registers/kichera.db'
+    },
+    'nijangarsk': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/registers/nijangarsk.db'
+    },
+    'uoyan': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/registers/uoyan.db'
+    },
+    'yanchukan': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'jku/registers/yanchukan.db'
+    },
 }
 
 # Password validation
