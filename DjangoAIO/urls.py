@@ -20,16 +20,19 @@ from django.urls import path, include
 import for_eko
 import for_energo
 import for_fkr
+from jku import for_ikibzyak
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls'), name='main'),
     path('fkr/', include('fkr.urls'), name='fkr'),
     path('eko/', include('eko.urls'), name='eko'),
-    path('energo/', include('energo.urls'), name='energo')
+    path('energo/', include('energo.urls'), name='energo'),
+    path('ikibzyak/', include('ikibzyak.urls'), name='ikibzyak'),
 ]
 
 
 for_fkr.fkr_connect_db()
 for_eko.eko_connect_db()
 for_energo.energo_connect_db()
+for_ikibzyak.ikibzyak_connect_db()
