@@ -1,0 +1,81 @@
+*{
+    scrollbar-width: none;
+}
+::-webkit-scrollbar {
+    width: 0;
+}
+.client-table{
+    margin: .5rem;
+}
+.client-table, tr, td {
+    border: .1rem solid black;
+    padding: .2rem;
+    text-align: center;
+}
+
+form{
+    display: flex;
+    margin: 1rem;
+}
+form label, input[type="submit"]{
+    margin: .3rem 1rem;
+}
+@media print{
+    nav, form{
+        display: none;
+    }
+    .spravka{
+        display: none;
+    }
+}
+
+.html_table tr:first-child{
+    background-color: #fdfd93;
+    font-weight: bold;
+}
+.html_table tr td:first-child{
+    font-weight: bold;
+}
+input[type="text"]{
+    border-radius: .5rem;
+}
+input[type="submit"]{
+    border-radius: .5rem;
+}
+input[type="submit"]{
+    border-radius: .5rem;
+    background-color: #fdfd93;
+}
+input[type="submit"]:focus{
+    border-radius: .5rem;
+    background-color: #b6fd93;
+}
+nav{
+    background-color: #fdfd93;
+    border-bottom: .1rem solid #a1a1a1;
+    padding: 1em;
+}
+.ikibzyak-active{
+    font-weight: bold;
+}
+.main-div{
+    margin-left: 2rem;
+    line-height: 1em;
+}
+.specialist{
+    line-height: 2.5em;
+}
+.results{
+    margin-top: .5rem;
+}
+.spravka a{
+    padding: .5rem;
+    background-color: #fdfd93;
+    border: 1px solid #a1a1a1;
+    border-radius: .5rem;
+    text-decoration: none;
+    color: #000;
+}
+.spravka a:hover{
+    background-color: #9bbe51;
+}
