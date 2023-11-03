@@ -60,7 +60,6 @@ def eko_connect_db():
     Pay979_10_2023 = cursor.fetchall()
     connection.close()
 
-
     return {
         'sprrab_tuples': sprrab_tuples,
         'sprdom_tuples': sprdom_tuples,
