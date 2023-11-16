@@ -46,6 +46,10 @@ def energo_connect_db():
     cursor.execute('SELECT * FROM sprrab202309')
     sprrab202309_tuples = cursor.fetchall()
 
+    # sprrab202310
+    cursor.execute('SELECT * FROM sprrab202310')
+    sprrab202310_tuples = cursor.fetchall()
+
     cursor.execute('SELECT * FROM pay')
     pays_tuples = cursor.fetchall()
 
@@ -64,6 +68,7 @@ def energo_connect_db():
         'sprrab202307_tuples': sprrab202307_tuples,
         'sprrab202308_tuples': sprrab202308_tuples,
         'sprrab202309_tuples': sprrab202309_tuples,
+        'sprrab202310_tuples': sprrab202310_tuples,
         'pays_tuples': pays_tuples,
     }
 
@@ -80,4 +85,5 @@ sprrab202306_tuples = result['sprrab202306_tuples']
 sprrab202307_tuples = result['sprrab202307_tuples']
 sprrab202308_tuples = result['sprrab202308_tuples']
 sprrab202309_tuples = result['sprrab202309_tuples']
+sprrab202310_tuples = result['sprrab202310_tuples']
 pays_tuples = result['pays_tuples']
