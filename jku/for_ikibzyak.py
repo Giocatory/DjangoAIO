@@ -55,6 +55,10 @@ def ikibzyak_connect_db():
     # s0923
     cursor.execute('SELECT * FROM `s0923`')
     s0923 = cursor.fetchall()
+
+    # s1023
+    cursor.execute('SELECT * FROM `s1023`')
+    s1023 = cursor.fetchall()
     connection.close()
 
     return {
@@ -71,6 +75,7 @@ def ikibzyak_connect_db():
         's0723': s0723,
         's0823': s0823,
         's0923': s0923,
+        's1023': s1023,
     }
 
 
@@ -88,3 +93,4 @@ s0623 = result['s0623']
 s0723 = result['s0723']
 s0823 = result['s0823']
 s0923 = result['s0923']
+s1023 = result['s1023']
