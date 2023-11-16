@@ -127,126 +127,192 @@ def fkr(request):
 
         statement_info.append("Другие собственники:")
 
-        pay_table.append(["Год, месяц", "Сальдо на начало месяца", "Начислено", "Оплачено", "Долг (Кол-во мес.)"])
+        pay_table.append([
+            "Год, месяц",
+            "Сальдо на начало месяца",
+            "Начислено",
+            "Оплачено",
+            "Долг (Кол-во мес.)",
+            "Субсидия"])
 
         # Pay772-01-2023
         Pay772_01_2023 = for_fkr.Pay772_01_2023
+        subs0123 = for_fkr.subs0123
+        subs_temp = 0
+
+        for i in subs0123:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_01_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
         # Pay772-02-2023
         Pay772_02_2023 = for_fkr.Pay772_02_2023
+        subs0223 = for_fkr.subs0223
+        subs_temp = 0
+
+        for i in subs0223:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_02_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
         # Pay772-03-2023
         Pay772_03_2023 = for_fkr.Pay772_03_2023
+        subs0323 = for_fkr.subs0323
+        subs_temp = 0
+
+        for i in subs0323:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_03_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
         # Pay772-04-2023
         Pay772_04_2023 = for_fkr.Pay772_04_2023
+        subs0423 = for_fkr.subs0423
+        subs_temp = 0
+
+        for i in subs0423:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_04_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
         # Pay772-05-2023
         Pay772_05_2023 = for_fkr.Pay772_05_2023
+        subs0523 = for_fkr.subs0523
+        subs_temp = 0
+
+        for i in subs0523:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_05_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
         # Pay772-06-2023
         Pay772_06_2023 = for_fkr.Pay772_06_2023
+        subs0623 = for_fkr.subs0623
+        subs_temp = 0
+
+        for i in subs0623:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_06_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
         # Pay772-07-2023
         Pay772_07_2023 = for_fkr.Pay772_07_2023
+        subs0723 = for_fkr.subs0723
+        subs_temp = 0
+
+        for i in subs0723:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_07_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
         # Pay772-08-2023
         Pay772_08_2023 = for_fkr.Pay772_08_2023
+        subs0823 = for_fkr.subs0823
+        subs_temp = 0
+
+        for i in subs0823:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_08_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
         # Pay772-09-2023
         Pay772_09_2023 = for_fkr.Pay772_09_2023
+        subs0923 = for_fkr.subs0923
+        subs_temp = 0
+
+        for i in subs0923:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_09_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
         # Pay772-10-2023
         Pay772_10_2023 = for_fkr.Pay772_10_2023
+        subs1023 = for_fkr.subs1023
+        subs_temp = 0
+
+        for i in subs1023:
+            if str(client_ls) == str(i[0]):
+                subs_temp = i[2]
 
         for i in Pay772_10_2023:
             if client_ls == i[1]:
                 if i[11] is None:
                     temp = '0'
-                    pay_table.append([i[2], i[3], i[4], i[5], temp])
+                    pay_table.append([i[2], i[3], i[4], i[5], temp, subs_temp])
                 else:
-                    pay_table.append([i[2], i[3], i[4], i[5], i[11]])
+                    pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
                 break
 
     specialist_stamp = ["М П", "Специалист ОСЗН"]

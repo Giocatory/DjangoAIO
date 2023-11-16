@@ -50,10 +50,10 @@ def ikibzyak(request):
         statement_info = []
         html_table = []
 
-        # s0923
-        s0923 = for_ikibzyak.s0923
+        # s1023
+        s1023 = for_ikibzyak.s1023
 
-        for i in s0923:
+        for i in s1023:
             if people_ls == str(i[1]):
                 statement_info.append(f"Л/счет: {i[1]}")
                 statement_info.append(f"ФИО: {i[2]} {i[3]} {i[4]}")
@@ -81,6 +81,18 @@ def ikibzyak(request):
             "КНС.Опл",
         ])
 
+        for i in s1023:
+            if people_ls == str(i[1]):
+                html_table.append([
+                    i[38],
+                    i[30], i[31], i[32], i[33],
+                    i[20], i[21], i[22], i[23],
+                    i[25], i[26], i[27], i[28],
+                    i[15], i[16], i[17], i[18],
+                ])
+
+        # s0923
+        s0923 = for_ikibzyak.s0923
         for i in s0923:
             if people_ls == str(i[1]):
                 html_table.append([

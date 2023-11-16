@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'fkr.apps.FkrConfig',
     'eko.apps.EkoConfig',
     'energo.apps.EnergoConfig',
+    'ikibzyak.apps.IkibzyakConfig',
+    'tvkom.apps.TvkomConfig',
 ]
 
 MIDDLEWARE = [
