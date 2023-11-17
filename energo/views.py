@@ -142,7 +142,7 @@ def energo(request):
                 break
 
         # pay_table
-        pay_table.append(["Дата", "Киловатты", "Тариф", "Сальдо", "Оплата"])
+        pay_table.append(["Дата", "Киловатты", "Тариф", "Сальдо", "Оплата", "Субсидия"])
         for i in pays_tuples:
             ls = str(i[0])
             if people_ls == ls[:-2]:
@@ -150,6 +150,12 @@ def energo(request):
                     break
 
                 # sprrab202310_tuples
+                subsid1023 = for_energo.subsid1023
+                subsid_total = 0
+                for s in subsid1023:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202310_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -160,6 +166,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             last_saldo = [f"{i[2]}", f"{i[1]}"]
@@ -170,6 +177,12 @@ def energo(request):
                         break
 
                 # sprrab202309_tuples
+                subsid0923 = for_energo.subsid0923
+                subsid_total = 0
+                for s in subsid0923:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202309_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -180,6 +193,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
@@ -189,6 +203,12 @@ def energo(request):
                         break
 
                 # sprrab202308_tuples
+                subsid0823 = for_energo.subsid0823
+                subsid_total = 0
+                for s in subsid0823:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202308_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -199,6 +219,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
@@ -208,6 +229,12 @@ def energo(request):
                         break
 
                 # sprrab202307_tuples
+                subsid0723 = for_energo.subsid0723
+                subsid_total = 0
+                for s in subsid0723:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202307_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -218,6 +245,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
@@ -227,6 +255,12 @@ def energo(request):
                         break
 
                 # sprrab202306_tuples
+                subsid0623 = for_energo.subsid0623
+                subsid_total = 0
+                for s in subsid0623:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202306_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -237,6 +271,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
@@ -246,6 +281,12 @@ def energo(request):
                         break
 
                 # sprrab202305_tuples
+                subsid0523 = for_energo.subsid0523
+                subsid_total = 0
+                for s in subsid0523:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202305_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -256,6 +297,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
@@ -265,6 +307,12 @@ def energo(request):
                         break
 
                 # sprrab202304_tuples
+                subsid0423 = for_energo.subsid0423
+                subsid_total = 0
+                for s in subsid0423:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202304_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -275,6 +323,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
@@ -284,6 +333,12 @@ def energo(request):
                         break
 
                 # sprrab202303_tuples
+                subsid0323 = for_energo.subsid0323
+                subsid_total = 0
+                for s in subsid0323:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202303_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -294,6 +349,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
@@ -303,6 +359,12 @@ def energo(request):
                         break
 
                 # sprrab202302_tuples
+                subsid0223 = for_energo.subsid0223
+                subsid_total = 0
+                for s in subsid0223:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202302_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -313,6 +375,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
@@ -322,6 +385,12 @@ def energo(request):
                         break
 
                 # sprrab202301_tuples
+                subsid0123 = for_energo.subsid0123
+                subsid_total = 0
+                for s in subsid0123:
+                    if str(people_ls) == str(s[0]):
+                        subsid_total = s[2]
+
                 for spr in sprrab202301_tuples:
                     if str(i[2]) == str(spr[14]):
                         ls = str(spr[0])
@@ -332,6 +401,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                subsid_total
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
@@ -351,6 +421,7 @@ def energo(request):
                                 tarif[f"{i[2]}"],
                                 f"{i[1]}",
                                 f"{i[4]}",
+                                0
                             ])
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])

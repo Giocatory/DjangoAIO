@@ -53,7 +53,47 @@ def energo_connect_db():
     cursor.execute('SELECT * FROM pay')
     pays_tuples = cursor.fetchall()
 
+    # subsidy
 
+    # subsid0123
+    cursor.execute('SELECT * FROM subsid0123')
+    subsid0123 = cursor.fetchall()
+
+    # subsid0223
+    cursor.execute('SELECT * FROM subsid0223')
+    subsid0223 = cursor.fetchall()
+
+    # subsid0323
+    cursor.execute('SELECT * FROM subsid0323')
+    subsid0323 = cursor.fetchall()
+
+    # subsid0423
+    cursor.execute('SELECT * FROM subsid0423')
+    subsid0423 = cursor.fetchall()
+
+    # subsid0523
+    cursor.execute('SELECT * FROM subsid0523')
+    subsid0523 = cursor.fetchall()
+
+    # subsid0623
+    cursor.execute('SELECT * FROM subsid0623')
+    subsid0623 = cursor.fetchall()
+
+    # subsid0723
+    cursor.execute('SELECT * FROM subsid0723')
+    subsid0723 = cursor.fetchall()
+
+    # subsid0823
+    cursor.execute('SELECT * FROM subsid0823')
+    subsid0823 = cursor.fetchall()
+
+    # subsid0923
+    cursor.execute('SELECT * FROM subsid0923')
+    subsid0923 = cursor.fetchall()
+
+    # subsid1023
+    cursor.execute('SELECT * FROM subsid1023')
+    subsid1023 = cursor.fetchall()
 
     connection.close()
 
@@ -70,6 +110,17 @@ def energo_connect_db():
         'sprrab202309_tuples': sprrab202309_tuples,
         'sprrab202310_tuples': sprrab202310_tuples,
         'pays_tuples': pays_tuples,
+        # subsidy
+        'subsid0123': subsid0123,
+        'subsid0223': subsid0223,
+        'subsid0323': subsid0323,
+        'subsid0423': subsid0423,
+        'subsid0523': subsid0523,
+        'subsid0623': subsid0623,
+        'subsid0723': subsid0723,
+        'subsid0823': subsid0823,
+        'subsid0923': subsid0923,
+        'subsid1023': subsid1023,
     }
 
 
@@ -87,3 +138,14 @@ sprrab202308_tuples = result['sprrab202308_tuples']
 sprrab202309_tuples = result['sprrab202309_tuples']
 sprrab202310_tuples = result['sprrab202310_tuples']
 pays_tuples = result['pays_tuples']
+# subsidy
+subsid0123 = result['subsid0123']
+subsid0223 = result['subsid0223']
+subsid0323 = result['subsid0323']
+subsid0423 = result['subsid0423']
+subsid0523 = result['subsid0523']
+subsid0623 = result['subsid0623']
+subsid0723 = result['subsid0723']
+subsid0823 = result['subsid0823']
+subsid0923 = result['subsid0923']
+subsid1023 = result['subsid1023']
