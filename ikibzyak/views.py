@@ -138,6 +138,7 @@ def ikibzyak(request):
                     i[25], i[26], i[27], i[28],
                     i[15], i[16], i[17], i[18],
                 ])
+                break
 
         # s0523
         s0523 = for_ikibzyak.s0523
@@ -154,18 +155,6 @@ def ikibzyak(request):
         # s0423
         s0423 = for_ikibzyak.s0423
         for i in s0423:
-            if people_ls == str(i[1]):
-                html_table.append([
-                    i[38],
-                    i[30], i[31], i[32], i[33],
-                    i[20], i[21], i[22], i[23],
-                    i[25], i[26], i[27], i[28],
-                    i[15], i[16], i[17], i[18],
-                ])
-
-        # s0323
-        s0323 = for_ikibzyak.s0323
-        for i in s0323:
             if people_ls == str(i[1]):
                 html_table.append([
                     i[38],
