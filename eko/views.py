@@ -8,6 +8,9 @@ import sqlite3
 
 @lru_cache(maxsize=None)
 def eko(request):
+    six_month_inf = []
+    six_month_val = [0, 0, 0, 0]
+
     # create table
     html_table = []
     statement_info = []
@@ -33,9 +36,11 @@ def eko(request):
                     if i[5] == j[1] and i[6] == j[3]:
                         if i[7] is None:
                             temp = ' '
-                            html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"Улица {j[4]}, дом {j[5]}, кв {temp}"])
+                            html_table.append(
+                                [i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"Улица {j[4]}, дом {j[5]}, кв {temp}"])
                         else:
-                            html_table.append([i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"Улица {j[4]}, дом {j[5]}, кв {i[7]}"])
+                            html_table.append(
+                                [i[1], f"{i[2]} {i[3]} {i[4]}", j[2], f"Улица {j[4]}, дом {j[5]}, кв {i[7]}"])
 
     # Если введена фамилия и имя
     elif people_ls == "" and people_fam != "" and people_imia != "":
@@ -46,7 +51,8 @@ def eko(request):
         sprdom_tuples = for_eko.sprdom_tuples
 
         for i in sprrab_tuples:
-            if (str(i[2]).lower()).startswith(people_fam.lower()) and (str(i[3]).lower()).startswith(people_imia.lower()):
+            if (str(i[2]).lower()).startswith(people_fam.lower()) and (str(i[3]).lower()).startswith(
+                    people_imia.lower()):
                 for j in sprdom_tuples:
                     if i[5] == j[1] and i[6] == j[3]:
                         if i[7] is None:
@@ -64,6 +70,8 @@ def eko(request):
 
         statement_info = []
         statement_info.append('ООО "Эко-Альянс"')
+
+        six_month_inf.append(["Сальдо", "Начислено", "Оплачено", "Субсидия"])
 
         for i in sprrab_tuples:
             if str(i[1]) == people_ls:
@@ -85,7 +93,8 @@ def eko(request):
                 statement_info.append(f"Тариф: {i[10]}")
                 statement_info.append(f"Норм.: {i[11]}")
 
-        pay_table.append(["Год, месяц", "Сальдо на начало месяца", "Начислено", "Оплачено", "Долг (Кол-во мес.)", "Субсидия"])
+        pay_table.append(
+            ["Год, месяц", "Сальдо на начало месяца", "Начислено", "Оплачено", "Долг (Кол-во мес.)", "Субсидия"])
 
         # Pay979-11-2022
         Pay979_11_2022 = for_eko.Pay979_11_2022
@@ -111,7 +120,7 @@ def eko(request):
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
 
-#####################################################
+        #####################################################
 
         # Pay979-2-2023
         Pay979_2_2023 = for_eko.Pay979_2_2023
@@ -178,6 +187,11 @@ def eko(request):
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
 
+                six_month_val[0] += float(str(i[3]).replace(",", "."))
+                six_month_val[1] += float(str(i[4]).replace(",", "."))
+                six_month_val[2] += float(str(i[5]).replace(",", "."))
+                six_month_val[3] += float(str(subs_temp).replace(",", "."))
+
         # Pay979-7-2023
         Pay979_7_2023 = for_eko.Pay979_7_2023
         subs0623 = for_eko.subs0623
@@ -190,6 +204,11 @@ def eko(request):
         for i in Pay979_7_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
+
+                six_month_val[0] += float(str(i[3]).replace(",", "."))
+                six_month_val[1] += float(str(i[4]).replace(",", "."))
+                six_month_val[2] += float(str(i[5]).replace(",", "."))
+                six_month_val[3] += float(str(subs_temp).replace(",", "."))
 
         # Pay979-8-2023
         Pay979_8_2023 = for_eko.Pay979_8_2023
@@ -204,6 +223,11 @@ def eko(request):
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
 
+                six_month_val[0] += float(str(i[3]).replace(",", "."))
+                six_month_val[1] += float(str(i[4]).replace(",", "."))
+                six_month_val[2] += float(str(i[5]).replace(",", "."))
+                six_month_val[3] += float(str(subs_temp).replace(",", "."))
+
         # Pay979-9-2023
         Pay979_9_2023 = for_eko.Pay979_9_2023
         subs0823 = for_eko.subs0823
@@ -216,6 +240,11 @@ def eko(request):
         for i in Pay979_9_2023:
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
+
+                six_month_val[0] += float(str(i[3]).replace(",", "."))
+                six_month_val[1] += float(str(i[4]).replace(",", "."))
+                six_month_val[2] += float(str(i[5]).replace(",", "."))
+                six_month_val[3] += float(str(subs_temp).replace(",", "."))
 
         # Pay979-10-2023
         Pay979_10_2023 = for_eko.Pay979_10_2023
@@ -230,6 +259,11 @@ def eko(request):
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
 
+                six_month_val[0] += float(str(i[3]).replace(",", "."))
+                six_month_val[1] += float(str(i[4]).replace(",", "."))
+                six_month_val[2] += float(str(i[5]).replace(",", "."))
+                six_month_val[3] += float(str(subs_temp).replace(",", "."))
+
         # Pay979-11-2023
         Pay979_11_2023 = for_eko.Pay979_11_2023
         subs1023 = for_eko.subs1023
@@ -243,6 +277,17 @@ def eko(request):
             if client_ls == i[1]:
                 pay_table.append([i[2], i[3], i[4], i[5], i[11], subs_temp])
 
+                six_month_val[0] += float(str(i[3]).replace(",", "."))
+                six_month_val[1] += float(str(i[4]).replace(",", "."))
+                six_month_val[2] += float(str(i[5]).replace(",", "."))
+                six_month_val[3] += float(str(subs_temp).replace(",", "."))
+
+    six_month_val[0] = f"{six_month_val[0]:.2f}"
+    six_month_val[1] = f"{six_month_val[1]:.2f}"
+    six_month_val[2] = f"{six_month_val[2]:.2f}"
+    six_month_val[3] = f"{six_month_val[3]:.2f}"
+    six_month_inf.append(six_month_val)
+
     specialist_stamp = ["М П", "Специалист ОСЗН"]
 
     return render(request, 'eko.html', {
@@ -250,4 +295,5 @@ def eko(request):
         'statement_info': statement_info,
         'pay_table': pay_table,
         'specialist_stamp': specialist_stamp,
+        'six_month_inf': six_month_inf,
     })

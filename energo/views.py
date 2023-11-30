@@ -8,6 +8,8 @@ import for_energo
 @lru_cache(maxsize=None)
 def energo(request):
     # total vars
+    six_month_inf = []
+    six_month_values = [0, 0, 0, 0, 0]
     searched_ls = ""
     tarif = {
         '202212': 3.464,
@@ -119,6 +121,8 @@ def energo(request):
         sprrab202310_tuples = for_energo.sprrab202310_tuples
         pays_tuples = for_energo.pays_tuples
 
+        six_month_inf.append(["Киловатты", "Тариф", "Сальдо", "Оплата", "Субсидия"])
+
         # common_table
         for i in sprrab202310_tuples:
             temp_str = []
@@ -172,6 +176,12 @@ def energo(request):
                             last_saldo = [f"{i[2]}", f"{i[1]}"]
                             total_middle_klv += int(spr[10])
                             total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
+
+                            six_month_values[0] += int(spr[10])
+                            six_month_values[1] = tarif[f"{i[2]}"]
+                            six_month_values[2] += float(str(i[1]).replace(",", '.'))
+                            six_month_values[3] += float(str(i[4]).replace(",", "."))
+                            six_month_values[4] += subsid_total
                             break
                     else:
                         break
@@ -198,6 +208,12 @@ def energo(request):
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
                             total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
+
+                            six_month_values[0] += int(spr[10])
+                            six_month_values[1] = tarif[f"{i[2]}"]
+                            six_month_values[2] += float(str(i[1]).replace(",", '.'))
+                            six_month_values[3] += float(str(i[4]).replace(",", "."))
+                            six_month_values[4] += subsid_total
                             break
                     else:
                         break
@@ -224,6 +240,12 @@ def energo(request):
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
                             total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
+
+                            six_month_values[0] += int(spr[10])
+                            six_month_values[1] = tarif[f"{i[2]}"]
+                            six_month_values[2] += float(str(i[1]).replace(",", '.'))
+                            six_month_values[3] += float(str(i[4]).replace(",", "."))
+                            six_month_values[4] += subsid_total
                             break
                     else:
                         break
@@ -250,6 +272,12 @@ def energo(request):
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
                             total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
+
+                            six_month_values[0] += int(spr[10])
+                            six_month_values[1] = tarif[f"{i[2]}"]
+                            six_month_values[2] += float(str(i[1]).replace(",", '.'))
+                            six_month_values[3] += float(str(i[4]).replace(",", "."))
+                            six_month_values[4] += subsid_total
                             break
                     else:
                         break
@@ -276,6 +304,12 @@ def energo(request):
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
                             total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
+
+                            six_month_values[0] += int(spr[10])
+                            six_month_values[1] = tarif[f"{i[2]}"]
+                            six_month_values[2] += float(str(i[1]).replace(",", '.'))
+                            six_month_values[3] += float(str(i[4]).replace(",", "."))
+                            six_month_values[4] += subsid_total
                             break
                     else:
                         break
@@ -302,6 +336,12 @@ def energo(request):
                             total_sumo += float(str(i[4]).replace(",", "."))
                             total_middle_klv += int(spr[10])
                             total_sum_klv += float(str(spr[10])) * tarif[f"{i[2]}"]
+
+                            six_month_values[0] += int(spr[10])
+                            six_month_values[1] = tarif[f"{i[2]}"]
+                            six_month_values[2] += float(str(i[1]).replace(",", '.'))
+                            six_month_values[3] += float(str(i[4]).replace(",", "."))
+                            six_month_values[4] += subsid_total
                             break
                     else:
                         break
@@ -436,12 +476,20 @@ def energo(request):
         result_table.append(
             f"Среднее потребление составило: {total_middle_klv}кВт.ч. на сумму {total_sum_klv:.2f} рублей")
 
+    six_month_values[0] = f"{six_month_values[0]:.2f}"
+    six_month_values[1] = f"{six_month_values[1]:.2f}"
+    six_month_values[2] = f"{six_month_values[2]:.2f}"
+    six_month_values[3] = f"{six_month_values[3]:.2f}"
+    six_month_values[4] = f"{six_month_values[4]:.2f}"
+    six_month_inf.append(six_month_values)
+
     return render(request, 'energo.html', {
         'html_table': html_table,
         'common_table': common_table,
         'pay_table': pay_table,
         'result_table': result_table,
         'searched_ls': searched_ls,
+        'six_month_inf': six_month_inf,
     })
 
 
@@ -468,7 +516,7 @@ def energo_spravka(request):
     people_ls = request.POST.get("supplier-ls")
 
     # connect
-    sprrab202309_tuples = for_energo.sprrab202309_tuples
+    sprrab202310_tuples = for_energo.sprrab202310_tuples
     pays_tuples = for_energo.pays_tuples
 
     # date
@@ -478,7 +526,7 @@ def energo_spravka(request):
         current_date = f"Дата выдачи: {datetime.now().day}.{datetime.now().month}.{datetime.now().year}"
 
     # spravka_arr
-    for spr in sprrab202309_tuples:
+    for spr in sprrab202310_tuples:
         temp_str = []
         if str(spr[0]) == people_ls:
             if spr[9] is not None:

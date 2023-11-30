@@ -46,6 +46,18 @@
             <p>{{ i }}</p>
         {% endfor %}
     </div>
+
+    <p><strong>Итог за последние 6 месяцев:</strong></p>
+    <table class="client-table html_table">
+    {% for i in six_month_inf %}
+        <tr>
+          {% for j in i%}
+            <td>{{ j }}</td>
+          {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+    <br>
 </div>
 
 <div class="spravka" style="margin-top: .5rem;">
